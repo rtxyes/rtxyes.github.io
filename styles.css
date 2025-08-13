@@ -1,0 +1,231 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+
+:root {
+  --clr-bg: #0f0f0f;
+  --clr-card: #1d1d1f;
+  --clr-input: #2c2c2e;
+  --clr-border: #3a3a3c;
+  --clr-light: #f1f1f1;
+  --clr-muted: #9a9a9a;
+  --clr-primary: #4c5eff;
+  --clr-danger: #e74c3c;
+  --clr-shadow: rgba(0, 0, 0, 0.2);
+  --max-width: 50rem;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  background-color: var(--clr-bg);
+  color: var(--clr-light);
+  margin: 0;
+  padding: 20px;
+}
+
+.header {
+  max-width: var(--max-width);
+  margin: 0 auto 12px;
+  border-bottom: 1px solid var(--clr-border);
+  padding-bottom: 8px;
+}
+
+.header p {
+  text-transform: uppercase;
+  font-size: 14px;
+  color: var(--clr-muted);
+  font-weight: bold;
+  margin: 0;
+}
+
+.header h2 {
+  font-size: 32px;
+  font-weight: 800;
+  margin: 0;
+  color: white;
+}
+
+.description {
+  max-width: 800px;
+  margin: 0 auto 24px;
+}
+
+.description p {
+  font-size: 18px;
+  color: var(--clr-muted);
+}
+
+.trips {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.container.trip {
+  position: relative;
+  background-color: var(--clr-card);
+  padding: 24px 16px 16px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  box-shadow: 0 4px 10px var(--clr-shadow);
+}
+
+.each {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 150px;
+  min-width: 150px;
+}
+
+.each label,
+.each p {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: var(--clr-muted);
+}
+
+.each input {
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  padding: 0 12px;
+  font-size: 16px;
+  background-color: var(--clr-input);
+  color: var(--clr-light);
+  outline: none;
+}
+
+.active-time {
+  display: flex;
+  gap: 8px;
+}
+
+.active-time input {
+  width: 100%;
+}
+
+.removeTripButton {
+  position: absolute;
+  top: 5px;
+  right: 6px;
+  background-color: var(--clr-danger);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  scale: 1;
+  padding: 4px 7px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10;
+  line-height: 1;
+  display: none;
+  transition: background-color 0.2s ease;
+  flex: none;
+  min-width: 0;
+}
+
+.buttons {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  margin-top: 24px;
+}
+
+/** Buttons */
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+button {
+  background-color: var(--clr-primary);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-size: 16px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.15s ease;
+  flex: 1 1 150px;
+  min-width: 150px;
+}
+
+/*
+#addTripButton {
+  background-color: rebeccapurple;
+}
+
+#resetButton {
+  background-color: red;
+}
+
+#calculateButton {
+  background-color: ;
+}
+*/
+
+button:hover {
+  background-color: #5e6bff;
+  transform: translateY(-1px);
+}
+
+.removeTripButton:hover {
+  background-color: #ff5e57;
+}
+
+/** Results */
+
+.results {
+  max-width: var(--max-width);
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  margin-top: 32px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--clr-light);
+  padding: 1rem 4rem;
+}
+
+@media (max-width: 720px) {
+  .results {
+    padding: 0;
+  }
+}
+
+.result {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.result p {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--clr-light);
+  margin: 0;
+}
