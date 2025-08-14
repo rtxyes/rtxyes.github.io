@@ -41,19 +41,61 @@ body {
   max-width: var(--max-width);
   margin: 0 auto;
   position: relative;
+  height: 0px;
 }
 
-#monero {
+.donate img {
   position: absolute;
   right: 0;
-  top: 0;
+  top: -5px;
 }
 
 .donate span {
   color: white;
   position: absolute;
   right: 36px;
-  top: 4px;
+  top: -2px;
+}
+
+@media (max-width: 672px) {
+  .donate img {
+    height: 24px;
+    top: -3px;
+    right: -2px;
+  }
+
+  .donate span {
+    font-size: 14px;
+    top: -1px;
+    right: 28px;
+  }
+}
+
+.support-us-header {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.support-us-description {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.support-us-header h2 {
+  font-size: 24px;
+}
+
+.support-us-header a {
+  color: var(--clr-primary);
+}
+
+.support-us-header a:visited {
+  color: var(--clr-primary);
+}
+
+.support-us-description p {
+  word-wrap: break-word;
 }
 
 .header {
@@ -71,7 +113,7 @@ body {
   margin: 0;
 }
 
-.header h2 {
+.header h1 {
   font-size: 32px;
   font-weight: 800;
   margin: 0;
@@ -218,7 +260,7 @@ button:hover {
 
 .results {
   max-width: var(--max-width);
-  display: flex;
+  display: none;
   flex-direction: column;
   margin: 0 auto;
   margin-top: 32px;
@@ -241,4 +283,8 @@ button:hover {
   font-weight: bold;
   color: var(--clr-light);
   margin: 0;
+}
+
+.active {
+  display: flex;
 }

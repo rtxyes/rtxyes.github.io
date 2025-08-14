@@ -5,6 +5,7 @@ const tripList = document.getElementById("tripList");
 const totalDisplay = document.getElementById("totalDisplay");
 const baseTotalDisplay = document.getElementById("baseTotalDisplay");
 const totalProp22Bonus = document.getElementById("totalProp22Bonus");
+const resultsDiv = document.getElementById("resultsDiv");
 
 function calculateAllTrips() {
   const tripContainers = document.querySelectorAll(".trip");
@@ -45,6 +46,7 @@ function calculateAllTrips() {
   totalDisplay.textContent = "$" + grandTotal.toFixed(2);
   baseTotalDisplay.textContent = "$" + grandBaseTotal.toFixed(2);
   totalProp22Bonus.textContent = "$" + grandProp22BonusTotal.toFixed(2);
+  resultsDiv.classList.add("active");
 }
 
 function addNewTrip() {
@@ -105,6 +107,7 @@ function resetAll() {
 
   setupRemoveButtons();
   calculateAllTrips();
+  resultsDiv.classList.remove("active");
 }
 
 // Initial setup
