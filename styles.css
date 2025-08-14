@@ -64,7 +64,6 @@ body {
 }
 
 @media (max-width: 672px) {
-
 }
 
 .support-us-header {
@@ -90,8 +89,14 @@ body {
   color: var(--clr-primary);
 }
 
+.support-us-description h3 {
+  margin-top: 36px;
+  margin-bottom: 4px;
+}
+
 .support-us-description p {
   word-wrap: break-word;
+  margin: 0;
 }
 
 .header {
