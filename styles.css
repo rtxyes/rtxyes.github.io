@@ -111,6 +111,7 @@ body {
   color: var(--clr-muted);
   font-weight: bold;
   margin: 0;
+  margin-top: 8px;
 }
 
 .header h1 {
@@ -118,6 +119,7 @@ body {
   font-weight: 800;
   margin: 0;
   color: white;
+  
 }
 
 .description {
