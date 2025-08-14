@@ -37,6 +37,25 @@ body {
   padding: 20px;
 }
 
+.donate {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  position: relative;
+}
+
+#monero {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.donate span {
+  color: white;
+  position: absolute;
+  right: 36px;
+  top: 4px;
+}
+
 .header {
   max-width: var(--max-width);
   margin: 0 auto 12px;
@@ -207,13 +226,7 @@ button:hover {
   font-size: 20px;
   font-weight: bold;
   color: var(--clr-light);
-  padding: 1rem 4rem;
-}
-
-@media (max-width: 720px) {
-  .results {
-    padding: 0;
-  }
+  padding: 1rem 0;
 }
 
 .result {
