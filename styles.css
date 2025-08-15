@@ -10,7 +10,7 @@
   --clr-primary: #4c5eff;
   --clr-danger: #e74c3c;
   --clr-shadow: rgba(0, 0, 0, 0.2);
-  --max-width: 50rem;
+  --max-width: 44rem;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -60,10 +60,8 @@ body {
   color: white;
   position: absolute;
   right: 64px;
-  top: -2px;
-}
-
-@media (max-width: 672px) {
+  top: -1px;
+  font-size: 15px;
 }
 
 .support-us-header {
@@ -123,7 +121,7 @@ body {
 }
 
 .description {
-  max-width: 800px;
+  max-width: var(--max-width);
   margin: 0 auto 24px;
 }
 

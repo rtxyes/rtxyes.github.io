@@ -29,7 +29,7 @@ function calculateAllTrips() {
     const decimalMinutes = minutes / 60;
     const decimalSeconds = seconds / 3600;
     const decimalTime = hours + decimalMinutes + decimalSeconds;
-    const moneyByTime = decimalTime * 19.80;
+    const moneyByTime = decimalTime * 19.8;
     const moneyByMiles = miles * 0.36;
     const timePay = basePay > moneyByTime ? basePay : moneyByTime;
     const tripTotal = timePay + moneyByMiles + customerTip;
@@ -46,6 +46,7 @@ function calculateAllTrips() {
   totalDisplay.textContent = "$" + grandTotal.toFixed(2);
   baseTotalDisplay.textContent = "$" + grandBaseTotal.toFixed(2);
   totalProp22Bonus.textContent = "$" + grandProp22BonusTotal.toFixed(2);
+
   resultsDiv.classList.add("active");
 }
 
@@ -72,8 +73,6 @@ function addNewTrip() {
   setupRemoveButtons();
 }
 
-//FIX BUG THAT CALCULATES GRAND TOTAL WHEN CLICKING X OF OTHER TRIP. IN OTHER WORDS ONLY REMOVE CALCULATION OF TRIP THAT NEEDS TO BE REMOVED IF ANY.
-
 function setupRemoveButtons() {
   const trips = document.querySelectorAll(".trip");
   trips.forEach((trip, index) => {
@@ -86,7 +85,12 @@ function setupRemoveButtons() {
       removeBtn.style.display = "inline-block";
       removeBtn.onclick = () => {
         trip.remove();
-        calculateAllTrips();
+
+        // Only recalculate if resultsDiv is active
+        if (resultsDiv.classList.contains("active")) {
+          calculateAllTrips();
+        }
+
         setupRemoveButtons(); // Refresh button state
       };
     }
