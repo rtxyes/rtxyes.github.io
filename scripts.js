@@ -1,26 +1,26 @@
-const calculateButton = document.getElementById("calculateButton");
+const calculateButton = document.getElementById("calculate-button");
 const addTripButton = document.getElementById("add-trip-button");
-const resetButton = document.getElementById("resetButton");
-const tripList = document.getElementById("tripList");
-const totalDisplay = document.getElementById("totalDisplay");
-const baseTotalDisplay = document.getElementById("baseTotalDisplay");
-const totalProp22Bonus = document.getElementById("totalProp22Bonus");
-const resultsDiv = document.getElementById("resultsDiv");
+const resetButton = document.getElementById("reset-button");
+const grandTotalSubheading = document.getElementById("grand-total-subheading");
+const baseTotalSubheading = document.getElementById("base-total-subheading");
+const prop22TotalSubheading = document.getElementById("prop22-total-subheading");
+const trips = document.querySelector(".trips");
+const results = document.querySelector(".results");
 
 function calculateAllTrips() {
-  const tripContainers = document.querySelectorAll(".trip");
+  const trip = document.querySelectorAll(".trip");
 
-  let grandTotal = 0;
   let grandBaseTotal = 0;
-  let grandProp22BonusTotal = 0;
+  let grandProp22Total = 0;
+  let grandTotal = 0;
 
-  tripContainers.forEach((trip) => {
-    const basePay = parseFloat(trip.querySelector(".basePay")?.value) || 0;
-    const customerTip = parseFloat(trip.querySelector(".customerTip")?.value) || 0;
+  trip.forEach((trip) => {
+    const basePay = parseFloat(trip.querySelector(".base-pay")?.value) || 0;
+    const customerTip = parseFloat(trip.querySelector(".customer-tip")?.value) || 0;
     const hours = parseFloat(trip.querySelector(".hours")?.value) || 0;
     const minutes = parseFloat(trip.querySelector(".minutes")?.value) || 0;
     const seconds = parseFloat(trip.querySelector(".seconds")?.value) || 0;
-    const miles = parseFloat(trip.querySelector(".milesDriven")?.value) || 0;
+    const miles = parseFloat(trip.querySelector(".miles-driven")?.value) || 0;
 
     if (minutes > 59 || seconds > 59) {
       alert("Minutes and seconds need to be between 0 and 59. (The incorrect trip(s) will not be added to the total.");
@@ -31,61 +31,63 @@ function calculateAllTrips() {
     const decimalSeconds = seconds / 3600;
     const decimalTime = hours + decimalMinutes + decimalSeconds;
     const moneyByTime = decimalTime * 19.8;
-    const moneyByMiles = miles * 0.36;
+    const prop22MoneyByMiles = miles * 0.36;
     const timePay = basePay > moneyByTime ? basePay : moneyByTime;
-    const tripTotal = timePay + moneyByMiles + customerTip;
+    const tripTotal = timePay + prop22MoneyByMiles + customerTip;
     const baseTotal = basePay + customerTip;
-    const moneyTimeSubtraction = moneyByTime - basePay;
-    const verifiedActiveMoney = moneyTimeSubtraction > 0 ? moneyTimeSubtraction : 0;
-    const prop22Total = verifiedActiveMoney + moneyByMiles;
+    const moneyByTimeDifference = moneyByTime - basePay;
+    const prop22ActiveTime = moneyByTimeDifference > 0 ? moneyByTimeDifference : 0;
+    const prop22Total = prop22ActiveTime + prop22MoneyByMiles;
 
-    grandTotal += tripTotal;
     grandBaseTotal += baseTotal;
-    grandProp22BonusTotal += prop22Total;
+    grandProp22Total += prop22Total;
+    grandTotal += tripTotal;
   });
 
-  totalDisplay.textContent = "$" + grandTotal.toFixed(2);
-  baseTotalDisplay.textContent = "$" + grandBaseTotal.toFixed(2);
-  totalProp22Bonus.textContent = "$" + grandProp22BonusTotal.toFixed(2);
+  baseTotalSubheading.textContent = "$" + grandBaseTotal.toFixed(2);
+  prop22TotalSubheading.textContent = "$" + grandProp22Total.toFixed(2);
+  grandTotalSubheading.textContent = "$" + grandTotal.toFixed(2);
 
-  resultsDiv.classList.add("active");
+  results.classList.add("active");
 }
 
 function addNewTrip() {
-  const firstTrip = document.querySelector(".trip");
-  const newTrip = firstTrip.cloneNode(true);
+  const trip = document.querySelector(".trip");
+  const additionalTrip = trip.cloneNode(true);
 
-  const inputs = newTrip.querySelectorAll("input");
+  const inputs = additionalTrip.querySelectorAll("input");
   inputs.forEach((input) => (input.value = ""));
 
-  const removeBtn = newTrip.querySelector(".removeTripButton");
-  if (removeBtn) {
-    removeBtn.style.display = "inline-block";
+  const removeTripButton = additionalTrip.querySelector(".remove-trip-button");
 
-    removeBtn.onclick = () => {
-      newTrip.remove();
+  if (removeTripButton) {
+    removeTripButton.style.display = "inline-block";
+
+    removeTripButton.onclick = () => {
+      additionalTrip.remove();
       calculateAllTrips();
       setupRemoveButtons();
     };
   }
 
-  tripList.appendChild(newTrip);
+  trips.appendChild(additionalTrip);
   setupRemoveButtons();
 }
 
 function setupRemoveButtons() {
-  const trips = document.querySelectorAll(".trip");
+  const trip = document.querySelectorAll(".trip");
 
-  trips.forEach((trip, index) => {
-    const removeBtn = trip.querySelector(".removeTripButton");
-    if (!removeBtn) return;
+  trip.forEach((trip, index) => {
+    const removeTripButton = trip.querySelector(".remove-trip-button");
+    if (!removeTripButton) return;
+    
     if (index === 0) {
-      removeBtn.style.display = "none";
+      removeTripButton.style.display = "none";
     } else {
-      removeBtn.style.display = "inline-block";
-      removeBtn.onclick = () => {
+      removeTripButton.style.display = "inline-block";
+      removeTripButton.onclick = () => {
         trip.remove();
-        if (resultsDiv.classList.contains("active")) {
+        if (results.classList.contains("active")) {
           calculateAllTrips();
         }
         setupRemoveButtons();
@@ -95,9 +97,9 @@ function setupRemoveButtons() {
 }
 
 function resetAll() {
-  const trips = document.querySelectorAll(".trip");
+  const trip = document.querySelectorAll(".trip");
 
-  trips.forEach((trip, index) => {
+  trip.forEach((trip, index) => {
     if (index === 0) {
       const inputs = trip.querySelectorAll("input");
       inputs.forEach((input) => (input.value = ""));
@@ -109,7 +111,7 @@ function resetAll() {
   setupRemoveButtons();
   calculateAllTrips();
 
-  resultsDiv.classList.remove("active");
+  results.classList.remove("active");
 }
 
 addTripButton.onclick = () => {

@@ -16,15 +16,6 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <!--
-    <div class="donate">
-      <a href="support-us">
-        <span>Support this project</span>
-        <img id="monero" src="monero.png" height="30px" />
-        <img id="bitcoin" src="bitcoin.png" height="25px" />
-      </a>
-    </div>
-    -->
     <div class="header">
       <p>California</p>
       <h1>The Prop 22 Calculator</h1>
@@ -35,56 +26,52 @@
     </div>
 
     <div class="trips">
-      <div id="tripList">
-        <div class="container trip">
-          <div class="each">
-            <label>Base Fare</label>
-            <input type="number" class="basePay" placeholder="0" />
-          </div>
-          <div class="each">
-            <label>Customer Tip</label>
-            <input type="number" class="customerTip" placeholder="0" />
-          </div>
-          <div class="each">
-            <label>Active Time</label>
-            <div class="active-time">
-              <input type="number" class="hours" placeholder="H" />
-              <input type="number" class="minutes" placeholder="M" />
-              <input type="number" class="seconds" placeholder="S" />
-            </div>
-          </div>
-          <div class="each">
-            <label>Miles Driven</label>
-            <input type="number" class="milesDriven" placeholder="0" />
-          </div>
-          <button class="removeTripButton">X</button>
+      <div class="trip">
+        <div class="trip-input">
+          <label>Base Fare</label>
+          <input type="number" class="base-pay" placeholder="0" />
         </div>
+        <div class="trip-input">
+          <label>Customer Tip</label>
+          <input type="number" class="customer-tip" placeholder="0" />
+        </div>
+        <div class="trip-input">
+          <label>Active Time</label>
+          <div class="active-time-input">
+            <input type="number" class="hours" placeholder="H" />
+            <input type="number" class="minutes" placeholder="M" />
+            <input type="number" class="seconds" placeholder="S" />
+          </div>
+        </div>
+        <div class="trip-input">
+          <label>Miles Driven</label>
+          <input type="number" class="miles-driven" placeholder="0" />
+        </div>
+        <button class="remove-trip-button">X</button>
       </div>
     </div>
 
-    <div class="buttons">
-      <div class="button-container">
-        <button id="add-trip-button">Add Trip</button>
-        <button id="resetButton">Reset</button>
-        <button id="calculateButton">Calculate</button>
-      </div>
+    <div class="blue-buttons">
+      <button id="add-trip-button">Add Trip</button>
+      <button id="reset-button">Reset</button>
+      <button id="calculate-button">Calculate</button>
     </div>
 
-    <div class="results" id="resultsDiv">
+    <div class="results">
       <div>
         <p id="results-heading">Total</p>
       </div>
       <div class="result">
         <p>Earnings:</p>
-        <span id="baseTotalDisplay">$0.00</span>
+        <span id="base-total-subheading">$0.00</span>
       </div>
       <div class="result">
         <p>Prop 22 bonus:</p>
-        <span id="totalProp22Bonus">$0.00</span>
+        <span id="prop22-total-subheading">$0.00</span>
       </div>
       <div class="result">
         <p>Total Earnings:</p>
-        <span id="totalDisplay">$0.00</span>
+        <span id="grand-total-subheading">$0.00</span>
       </div>
     </div>
 
