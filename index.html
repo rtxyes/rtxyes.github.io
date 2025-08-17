@@ -10,12 +10,13 @@
     <meta name="description" content="Use this tool to calculate your Prop 22 earnings." />
     <meta property="og:description" content="Use this tool to calculate your Prop 22 earnings." />
 
-    <meta property="og:url" content="https://www.theprop22calculator.com" />
     <meta property="og:site_name" content="The Prop 22 Calculator" />
+    <meta property="og:url" content="https://www.theprop22calculator.com" />
 
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <!--
     <div class="donate">
       <a href="support-us">
         <span>Support this project</span>
@@ -23,13 +24,14 @@
         <img id="bitcoin" src="bitcoin.png" height="25px" />
       </a>
     </div>
+    -->
     <div class="header">
       <p>California</p>
       <h1>The Prop 22 Calculator</h1>
     </div>
 
     <div class="description">
-      <p>Have you ever wondered how much extra money you'll make from Prop 22 before payday?</p>
+      <p>Find out how much extra money you'll make from Prop 22.</p>
     </div>
 
     <div class="trips">
@@ -37,23 +39,23 @@
         <div class="container trip">
           <div class="each">
             <label>Base Fare</label>
-            <input type="number" class="basePay" placeholder="0" step="0.01" min="0" />
+            <input type="number" class="basePay" placeholder="0" />
           </div>
           <div class="each">
             <label>Customer Tip</label>
-            <input type="number" class="customerTip" placeholder="0" step="0.01" min="0" />
+            <input type="number" class="customerTip" placeholder="0" />
           </div>
           <div class="each">
             <label>Active Time</label>
             <div class="active-time">
-              <input type="number" class="hours" placeholder="H" min="0" />
+              <input type="number" class="hours" placeholder="H" />
               <input type="number" class="minutes" placeholder="M" />
               <input type="number" class="seconds" placeholder="S" />
             </div>
           </div>
           <div class="each">
             <label>Miles Driven</label>
-            <input type="number" class="milesDriven" placeholder="0" step="0.01" min="0" />
+            <input type="number" class="milesDriven" placeholder="0" />
           </div>
           <button class="removeTripButton">X</button>
         </div>
@@ -62,13 +64,16 @@
 
     <div class="buttons">
       <div class="button-container">
-        <button id="addTripButton">Add Trip</button>
-        <button id="resetButton">Reset All</button>
+        <button id="add-trip-button">Add Trip</button>
+        <button id="resetButton">Reset</button>
         <button id="calculateButton">Calculate</button>
       </div>
     </div>
 
     <div class="results" id="resultsDiv">
+      <div>
+        <p id="results-heading">Total</p>
+      </div>
       <div class="result">
         <p>Earnings:</p>
         <span id="baseTotalDisplay">$0.00</span>

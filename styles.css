@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
 
 :root {
-  --clr-bg: #0f0f0f;
+  --color-bg: #121212;
   --clr-card: #1d1d1f;
   --clr-input: #2c2c2e;
   --clr-border: #3a3a3c;
@@ -10,7 +10,7 @@
   --clr-primary: #4c5eff;
   --clr-danger: #e74c3c;
   --clr-shadow: rgba(0, 0, 0, 0.2);
-  --max-width: 44rem;
+  --max-width: 720px;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -31,70 +31,10 @@ input[type="number"] {
 
 body {
   font-family: "DM Sans", sans-serif;
-  background-color: var(--clr-bg);
+  background-color: var(--color-bg);
   color: var(--clr-light);
   margin: 0;
-  padding: 20px;
-}
-
-.donate {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  position: relative;
-  height: 0px;
-}
-
-#monero {
-  position: absolute;
-  right: 28px;
-  top: -5px;
-}
-
-#bitcoin {
-  position: absolute;
-  right: 0px;
-  top: -3px;
-}
-
-.donate span {
-  color: white;
-  position: absolute;
-  right: 64px;
-  top: -1px;
-  font-size: 15px;
-}
-
-.support-us-header {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  text-align: center;
-}
-
-.support-us-description {
-  max-width: var(--max-width);
-  margin: 0 auto;
-}
-
-.support-us-header h2 {
-  font-size: 24px;
-}
-
-.support-us-header a {
-  color: var(--clr-primary);
-}
-
-.support-us-header a:visited {
-  color: var(--clr-primary);
-}
-
-.support-us-description h3 {
-  margin-top: 36px;
-  margin-bottom: 4px;
-}
-
-.support-us-description p {
-  word-wrap: break-word;
-  margin: 0;
+  padding: 32px 20px;
 }
 
 .header {
@@ -110,7 +50,6 @@ body {
   color: var(--clr-muted);
   font-weight: bold;
   margin: 0;
-  margin-top: 30px;
 }
 
 .header h1 {
@@ -209,7 +148,7 @@ body {
   margin-top: 24px;
 }
 
-/** Buttons */
+/** --- Blue Buttons --- **/
 
 .button-container {
   display: flex;
@@ -233,20 +172,6 @@ button {
   min-width: 150px;
 }
 
-/*
-#addTripButton {
-  background-color: rebeccapurple;
-}
-
-#resetButton {
-  background-color: red;
-}
-
-#calculateButton {
-  background-color: ;
-}
-*/
-
 button:hover {
   background-color: #5e6bff;
   transform: translateY(-1px);
@@ -256,19 +181,18 @@ button:hover {
   background-color: #ff5e57;
 }
 
-/** Results */
+/** --- Results --- **/
 
 .results {
   max-width: var(--max-width);
   display: none;
   flex-direction: column;
   margin: 0 auto;
-  margin-top: 32px;
-  text-align: center;
+  margin-top: 16px;
   font-size: 20px;
   font-weight: bold;
   color: var(--clr-light);
-  padding: 1rem 0;
+  padding: 16px 0px;
 }
 
 .result {
@@ -285,6 +209,77 @@ button:hover {
   margin: 0;
 }
 
+#results-heading {
+  text-align: center;
+  margin: 16px 0;
+}
+
 .active {
   display: flex;
 }
+
+/** --- Support Us Page --- **/
+
+.support-us-header {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.support-us-description {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.support-us-header h2 {
+  font-size: 24px;
+}
+
+.support-us-header a {
+  color: var(--clr-primary);
+}
+
+.support-us-header a:visited {
+  color: var(--clr-primary);
+}
+
+.support-us-description h3 {
+  margin-top: 36px;
+  margin-bottom: 4px;
+}
+
+.support-us-description p {
+  word-wrap: break-word;
+  margin: 0;
+}
+
+/** --- Donate --- **/
+
+.donate {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  position: relative;
+  height: 0px;
+}
+
+#monero {
+  position: absolute;
+  right: 28px;
+  top: -5px;
+}
+
+#bitcoin {
+  position: absolute;
+  right: 0px;
+  top: -3px;
+}
+
+.donate span {
+  color: white;
+  position: absolute;
+  right: 64px;
+  top: -1px;
+  font-size: 15px;
+}
+
+/** --- END --- **/
