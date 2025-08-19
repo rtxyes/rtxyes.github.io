@@ -4,13 +4,14 @@
   --color-bg: #121212;
   --clr-card: #1d1d1f;
   --clr-input: #2c2c2e;
-  --clr-border: #3a3a3c;
-  --clr-light: #f1f1f1;
+  --clr-border: #434346;
+  --clr-light: #f4f4f4;
   --clr-muted: #9a9a9a;
   --clr-primary: #4c5eff;
   --clr-danger: #e74c3c;
   --clr-shadow: rgba(0, 0, 0, 0.2);
   --max-width: 720px;
+  --clr-surface-a10: #282828;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -185,99 +186,104 @@ body {
   max-width: var(--max-width);
   display: none;
   flex-direction: column;
-  margin: 0 auto;
-  margin-top: 16px;
-  font-size: 20px;
-  font-weight: bold;
-  color: var(--clr-light);
-  padding: 16px 0px;
-}
-
-.result {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.result p {
-  text-align: center;
-  font-size: 20px;
-  font-weight: bold;
-  color: var(--clr-light);
-  margin: 0;
+  margin: 32px auto 16px;
+  padding: 24px;
+  background-color: var(--clr-card);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 #results-heading {
   text-align: center;
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 26px;
+  color: var(--clr-accent);
+  text-transform: uppercase;
   margin: 16px 0;
 }
+
+.result {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.result:last-child {
+  border-bottom: none;
+}
+
+.result p,
+.result span {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/** --- Breakdowns --- **/
+
+.breakdowns {
+  max-width: var(--max-width);
+  display: none;
+  flex-direction: column;
+  margin: 16px auto;
+  padding: 24px;
+  background-color: var(--clr-card);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#breakdowns-heading {
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 26px;
+  color: var(--clr-accent);
+  text-transform: uppercase;
+  margin: 8px 0;
+  margin-bottom: 16px;
+}
+
+.breakdown {
+  border: 1px solid var(--clr-border);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.breakdown-trip-number {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #fff;
+}
+
+.breakdown-result {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0;
+  border-bottom: 1px solid var(--clr-border);
+  height: 56px;
+}
+
+.breakdown-result:last-child {
+  border-bottom: none;
+}
+
+.breakdown-result p {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.breakdown-result span {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/** --- Utility --- **/
 
 .active {
   display: flex;
 }
-
-/** --- Support Us Page --- **/
-
-.support-us-header {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  text-align: center;
-}
-
-.support-us-description {
-  max-width: var(--max-width);
-  margin: 0 auto;
-}
-
-.support-us-header h2 {
-  font-size: 24px;
-}
-
-.support-us-header a {
-  color: var(--clr-primary);
-}
-
-.support-us-header a:visited {
-  color: var(--clr-primary);
-}
-
-.support-us-description h3 {
-  margin-top: 36px;
-  margin-bottom: 4px;
-}
-
-.support-us-description p {
-  word-wrap: break-word;
-  margin: 0;
-}
-
-/** --- Donate --- **/
-
-.donate {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  position: relative;
-  height: 0px;
-}
-
-#monero {
-  position: absolute;
-  right: 28px;
-  top: -5px;
-}
-
-#bitcoin {
-  position: absolute;
-  right: 0px;
-  top: -3px;
-}
-
-.donate span {
-  color: white;
-  position: absolute;
-  right: 64px;
-  top: -1px;
-  font-size: 15px;
-}
-
-/** --- END --- **/

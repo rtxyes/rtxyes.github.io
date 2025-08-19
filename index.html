@@ -29,7 +29,7 @@
       <div class="trip">
         <div class="trip-input">
           <label>Base Fare</label>
-          <input type="number" class="base-pay" placeholder="0" />
+          <input type="number" class="base-fare" placeholder="0" />
         </div>
         <div class="trip-input">
           <label>Customer Tip</label>
@@ -58,20 +58,38 @@
     </div>
 
     <div class="results">
-      <div>
-        <p id="results-heading">Total</p>
-      </div>
+      <p id="results-heading">Total</p>
       <div class="result">
         <p>Earnings:</p>
-        <span id="base-total-subheading">$0.00</span>
+        <span id="base-total-subheading"></span>
       </div>
       <div class="result">
         <p>Prop 22 bonus:</p>
-        <span id="prop22-total-subheading">$0.00</span>
+        <span id="prop22-total-subheading"></span>
       </div>
       <div class="result">
         <p>Total Earnings:</p>
-        <span id="grand-total-subheading">$0.00</span>
+        <span id="grand-total-subheading"></span>
+      </div>
+    </div>
+
+    <div class="breakdowns">
+      <p id="breakdowns-heading">Breakdown</p>
+
+      <div class="breakdown">
+        <p class="breakdown-trip-number"></p>
+        <div class="breakdown-result">
+          <p>Earnings</p>
+          <span class="breakdown-base-total"></span>
+        </div>
+        <div class="breakdown-result">
+          <p>Prop 22 bonus</p>
+          <span class="breakdown-prop22-total"></span>
+        </div>
+        <div class="breakdown-result">
+          <p>Total earnings</p>
+          <span class="breakdown-grand-total"></span>
+        </div>
       </div>
     </div>
 
