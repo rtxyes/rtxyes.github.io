@@ -66,6 +66,7 @@ function calculateTrips() {
 
   document.querySelector(".results").classList.add("active");
   breakdownsContainer.classList.add("active");
+  saveToUrl();
 }
 
 function addNewTrip() {
@@ -135,9 +136,61 @@ function resetAll() {
   breakdowns.classList.remove("active");
 }
 
+function saveToUrl() {
+  const trips = document.querySelectorAll(".trip");
+  const tripData = [];
+
+  trips.forEach((trip) => {
+    const inputs = trip.querySelectorAll("input");
+    const values = Array.from(inputs).map((input) => input.value);
+    tripData.push(values); // [base, tip, hours, minutes, seconds, miles]
+  });
+
+  const dataString = encodeURIComponent(JSON.stringify(tripData));
+  const newUrl = `${window.location.pathname}?data=${dataString}`;
+
+  history.replaceState(null, "", newUrl); // doesn't reload the page
+}
+
 addTripButton.onclick = () => {
   addNewTrip();
 };
+
+function loadFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const data = params.get("data");
+
+  if (!data) return;
+
+  try {
+    const tripData = JSON.parse(decodeURIComponent(data));
+
+    const originalTrip = document.querySelector(".trip");
+    const tripsContainer = document.querySelector(".trips");
+    tripsContainer.innerHTML = ""; // Clear all existing
+
+    tripData.forEach((values, index) => {
+      const trip = originalTrip.cloneNode(true);
+      const inputs = trip.querySelectorAll("input");
+
+      values.forEach((value, i) => {
+        inputs[i].value = value;
+      });
+
+      tripsContainer.appendChild(trip);
+    });
+
+    setupRemoveButtons();
+    calculateTrips();
+
+  } catch (e) {
+    console.error("Invalid data in URL:", e);
+  }
+}
+
+// Run it on load
+loadFromUrl();
+
 
 setupRemoveButtons();
 calculateButton.onclick = calculateTrips;
