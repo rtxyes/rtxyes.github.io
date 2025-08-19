@@ -66,7 +66,7 @@ function calculateTrips() {
 
   document.querySelector(".results").classList.add("active");
   breakdownsContainer.classList.add("active");
-  saveToUrl();
+  //saveToUrl();
 }
 
 function addNewTrip() {
@@ -136,6 +136,8 @@ function resetAll() {
   breakdowns.classList.remove("active");
 }
 
+/*
+
 function saveToUrl() {
   const trips = document.querySelectorAll(".trip");
   const tripData = [];
@@ -152,9 +154,6 @@ function saveToUrl() {
   history.replaceState(null, "", newUrl); // doesn't reload the page
 }
 
-addTripButton.onclick = () => {
-  addNewTrip();
-};
 
 function loadFromUrl() {
   const params = new URLSearchParams(window.location.search);
@@ -190,7 +189,11 @@ function loadFromUrl() {
 
 // Run it on load
 loadFromUrl();
+*/
 
+addTripButton.onclick = () => {
+  addNewTrip();
+};
 
 setupRemoveButtons();
 calculateButton.onclick = calculateTrips;
