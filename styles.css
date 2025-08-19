@@ -81,7 +81,7 @@ body {
   position: relative;
   background-color: var(--clr-card);
   padding: 24px 16px 16px;
-  border-radius: 12px;
+  border-radius: 10px;
   margin-bottom: 16px;
   display: flex;
   flex-wrap: wrap;
@@ -255,9 +255,8 @@ body {
 }
 
 .breakdown {
-  border: 1px solid var(--clr-border);
+  /*border: 1px solid var(--clr-border);*/
   border-radius: 8px;
-  padding: 16px;
   margin-bottom: 16px;
 }
 
@@ -275,6 +274,7 @@ body {
   padding: 0 0;
   border-bottom: 1px solid var(--clr-border);
   height: 56px;
+  margin-left: 20px;
 }
 
 .breakdown-result:last-child {

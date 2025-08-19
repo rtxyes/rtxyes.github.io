@@ -60,9 +60,9 @@ function calculateTrips() {
 
   originalBreakdown.style.display = "none";
 
-  document.getElementById("base-total-subheading").textContent = `$${grandBaseTotal.toFixed(2)}`;
-  document.getElementById("prop22-total-subheading").textContent = `$${grandProp22Total.toFixed(2)}`;
-  document.getElementById("grand-total-subheading").textContent = `$${grandTotal.toFixed(2)}`;
+  document.querySelector("#result-base-total").textContent = `$${grandBaseTotal.toFixed(2)}`;
+  document.querySelector("#result-prop22-total").textContent = `$${grandProp22Total.toFixed(2)}`;
+  document.querySelector("#result-grand-total").textContent = `$${grandTotal.toFixed(2)}`;
 
   document.querySelector(".results").classList.add("active");
   breakdownsContainer.classList.add("active");
