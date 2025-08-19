@@ -201,6 +201,7 @@ body {
   color: var(--clr-accent);
   text-transform: uppercase;
   margin: 16px 0;
+  margin-top: 8px;
 }
 
 .result {
@@ -236,7 +237,7 @@ body {
   display: none;
   flex-direction: column;
   margin: 16px auto;
-  padding: 16px;
+  padding: 24px;
   background-color: var(--clr-card);
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
