@@ -20,19 +20,17 @@ function calculateTrips() {
     const inputs = trip.querySelectorAll("input");
     const [baseInput, tipInput, hoursInput, minutesInput, secondsInput, milesInput] = inputs;
 
+    const breakdown = originalBreakdown.cloneNode(true);
+    breakdown.style.display = "block";
+    breakdownsContainer.appendChild(breakdown);
+
     const base = parseFloat(baseInput.value) || 0;
     const tip = parseFloat(tipInput.value) || 0;
     const hours = parseFloat(hoursInput.value) || 0;
+
     const minutes = parseFloat(minutesInput.value) || 0;
     const seconds = parseFloat(secondsInput.value) || 0;
     const miles = parseFloat(milesInput.value) || 0;
-
-    if (minutes > 59 || seconds > 59) {
-      alert(`Trip #${index + 1}: Minutes and seconds must be between 0 and 59. Skipping this trip.`);
-      return;
-    }
-
-    console.log(inputs);
 
     const decimalTime = hours + minutes / 60 + seconds / 3600;
     const moneyByTime = decimalTime * 19.8;
@@ -43,28 +41,33 @@ function calculateTrips() {
     const prop22Bonus = Math.max(0, moneyByTime - base) + moneyByMiles;
     const tripTotal = timePay + moneyByMiles + tip;
 
+    if (minutes > 59 || seconds > 59) {
+      alert(`Trip #${index + 1}: Minutes and seconds must be between 0 and 59. Skipping this trip.`);
+
+      breakdown.querySelector(".breakdown-trip-number").textContent = `Trip #${index + 1}`;
+      breakdown.querySelector(".breakdown-base-total").textContent = `$0.00`;
+      breakdown.querySelector(".breakdown-prop22-total").textContent = `$0.00`;
+      breakdown.querySelector(".breakdown-grand-total").textContent = `$0.00`;
+      return;
+    }
+
     grandBaseTotal += baseTotal;
     grandProp22Total += prop22Bonus;
     grandTotal += tripTotal;
-
-    const breakdown = originalBreakdown.cloneNode(true);
-    breakdown.style.display = "block";
 
     breakdown.querySelector(".breakdown-trip-number").textContent = `Trip #${index + 1}`;
     breakdown.querySelector(".breakdown-base-total").textContent = `$${baseTotal.toFixed(2)}`;
     breakdown.querySelector(".breakdown-prop22-total").textContent = `$${prop22Bonus.toFixed(2)}`;
     breakdown.querySelector(".breakdown-grand-total").textContent = `$${tripTotal.toFixed(2)}`;
-
-    breakdownsContainer.appendChild(breakdown);
   });
 
   originalBreakdown.style.display = "none";
 
-  document.querySelector("#result-base-total").textContent = `$${grandBaseTotal.toFixed(2)}`;
-  document.querySelector("#result-prop22-total").textContent = `$${grandProp22Total.toFixed(2)}`;
-  document.querySelector("#result-grand-total").textContent = `$${grandTotal.toFixed(2)}`;
+  results.querySelector("#result-base-total").textContent = `$${grandBaseTotal.toFixed(2)}`;
+  results.querySelector("#result-prop22-total").textContent = `$${grandProp22Total.toFixed(2)}`;
+  results.querySelector("#result-grand-total").textContent = `$${grandTotal.toFixed(2)}`;
 
-  document.querySelector(".results").classList.add("active");
+  results.classList.add("active");
   breakdownsContainer.classList.add("active");
   //saveToUrl();
 }
@@ -74,8 +77,9 @@ function addNewTrip() {
   const additionalTrip = originalTrip.cloneNode(true);
 
   const inputs = additionalTrip.querySelectorAll("input");
-  inputs.forEach((element) => {
-    element.value = "";
+
+  inputs.forEach((i) => {
+    i.value = "";
   });
 
   const removeTripButton = additionalTrip.querySelector(".remove-trip-button");
@@ -97,7 +101,6 @@ function setupRemoveButtons() {
 
   trips.forEach((trip, index) => {
     const removeTripButton = trip.querySelector(".remove-trip-button");
-    if (!removeTripButton) return;
 
     if (index === 0) {
       removeTripButton.style.display = "none";
@@ -110,8 +113,6 @@ function setupRemoveButtons() {
         if (results.classList.contains("active")) {
           calculateTrips();
         }
-
-        setupRemoveButtons();
       };
     }
   });
@@ -123,7 +124,7 @@ function resetAll() {
   trip.forEach((trip, index) => {
     if (index === 0) {
       const inputs = trip.querySelectorAll("input");
-      inputs.forEach((input) => (input.value = ""));
+      inputs.forEach((i) => (i.value = ""));
     } else {
       trip.remove();
     }
